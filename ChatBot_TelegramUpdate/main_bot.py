@@ -20,7 +20,7 @@ def hello(bot, update):
         '{}'.format(bot_.get_response(resq)))
 
 
-updater = Updater('695940313:AAGoX81El490A9lpokCYDSa2nbgF3JCHa4Y')
+updater = Updater('TELEGRAM TOKEM')
 
 updater.dispatcher.add_handler(RegexHandler('', hello))
 updater.start_polling()
