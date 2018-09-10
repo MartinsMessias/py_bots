@@ -1,0 +1,6 @@
+Você sabe Python?
+Estou aprendendo.
+Qual IDE vc usa?
+PyCharm.
+Por que?
+Não sei, acho que é porque é facil de usar.
