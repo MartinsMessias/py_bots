@@ -1,26 +1,35 @@
 # -*- coding: utf-8 -*-
-from chatterbot.trainers import ListTrainer
-from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer, ChatterBotCorpusTrainer
+from chatterbot import ChatBot, corpus, languages
 from telegram.ext import Updater, CommandHandler, RegexHandler
 import os
 
 
-bot_ = ChatBot('Clovis')
-bot_.set_trainer(ListTrainer)
+bot_ = ChatBot('BotName')
 
-for arqv in os.listdir('arqv'):
-    chats = open('arqv/' + arqv, 'r').readlines()
-    bot_.train(chats)
+trainer = ChatterBotCorpusTrainer(bot_)
+
+# Alternar para esse caso queira treinar de um arquivo
+# bot_.set_trainer(ListTrainer)
+# trainer = ListTrainer(bot_)
+
+# Treina baseado em um dicionário de frases definidas
+trainer.train("chatterbot.corpus.portuguese")
+
+# Alternar para esse caso queira que ele treine 
+# as frases de um arquivo em específico
+#for arqv in os.listdir('arqv'):
+#   chats = open('arqv/' + arqv, 'r').readlines()
 
 
 def func(bot, update):
     resq = update['message']['text']
-    print('Response: ', resq)
     update.message.reply_text(
         '{}'.format(bot_.get_response(resq)))
 
 
-updater = Updater('TELEGRAM TOKEM')
+updater = Updater('TELEGRAM_TOKEN')
 updater.dispatcher.add_handler(RegexHandler('', func))
 updater.start_polling()
 updater.idle()
+
