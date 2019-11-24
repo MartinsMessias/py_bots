@@ -14,7 +14,13 @@ trainer = ChatterBotCorpusTrainer(bot_)
 # trainer = ListTrainer(bot_)
 
 # Treina baseado em um dicionário de frases definidas
-trainer.train("chatterbot.corpus.portuguese")
+trainer.train(
+    'chatterbot.corpus.portuguese.compliment',
+    'chatterbot.corpus.portuguese.conversations',
+    'chatterbot.corpus.portuguese.games',
+    'chatterbot.corpus.portuguese.greetings',
+    'chatterbot.corpus.portuguese.money',
+)
 
 # Alternar para esse caso queira que ele treine 
 # as frases de um arquivo em específico
